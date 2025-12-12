@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | EasyDownloadsByk</title>
+
+  <!-- CSS -->
+ <link rel="stylesheet" href="{% static 'auth/css/style.css' %}">
+</head>
+
+<body>
+
+  <!-- Logo -->
+  <a href="index.html" class="logo-link">
+    <img 
+      src="https://i.ibb.co/1GX2ycPK/easydownload-high-resolution-logo-transparent.png" 
+      alt="EasyDownloads Logo"
+    >
+  </a>
+
+  <!-- Menu Button -->
+  <button id="menuToggle" class="menu-toggle">☰</button>
+
+  <!-- Side Menu -->
+  <nav id="sideMenu" class="side-menu">
+    <button id="closeMenu" class="close-btn">×</button>
+    <ul>
+         <li><a href="{% url 'home' %}">🏠 Home</a></li>
+      <li><a href="{% url 'movies' %}">🎬 Movies</a></li>
+      <li><a href="{% url 'anime' %}">🎞️ Anime</a></li>
+      <li><a href="{% url 'about' %}">ℹ️ About</a></li>
+      <li><a href="{% url 'contact' %}">📩 Contact</a></li>
+      <li><a href="{% url 'login' %}"> 🪪Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Theme Toggle -->
+  <button id="themeToggle" class="theme-toggle">🌙</button>
+
+  <!-- Contact Section -->
+  <section class="about-section">
+    <h1>📩 Contact Us</h1>
+
+    <div class="contact-card">
+      <p><strong>Email:</strong> downloadseasy65@gmail.com</p>
+      <p><strong>Phone:</strong> +91 93541234567</p>
+      <p><strong>Address:</strong> (Gandhi)Subhe Me Salt Rat Me Assault, Amravati</p>
+    </div>
+
+    <h2>🌐 Optional Social Links</h2>
+    <div class="contact-social">
+      <p><strong>Facebook:</strong> 
+        <a href="https://facebook.com/yourpage" target="_blank">facebook.com/yourpage</a>
+      </p>
+      <p><strong>Twitter:</strong> 
+        <a href="https://twitter.com/yourhandle" target="_blank">twitter.com/yourhandle</a>
+      </p>
+      <p><strong>LinkedIn:</strong> 
+        <a href="https://linkedin.com/company/yourcompany" target="_blank">
+          linkedin.com/company/yourcompany
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 EasyDownloads — Contact Page.
+  </footer>
+
+  <!-- JS -->
+   <script src="{% static 'auth/js/main.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime | EasyDownloadsByk</title>
+  <link rel="stylesheet" href="{% static 'auth/css/style.css' %}">
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader" id="loader">Loading...</div>
+
+  <!-- Logo -->
+  <a href="index.html" class="logo-link">
+    <img src="https://i.ibb.co/1GX2ycPK/easydownload-high-resolution-logo-transparent.png" alt="EasyDownloads Logo">
+  </a>
+
+  <!-- Theme + Menu -->
+  <button id="themeToggle" class="theme-toggle">🌙 </button>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+
+  <nav id="sideMenu" class="side-menu">
+    <button class="close-btn" id="closeMenu">×</button>
+    <ul>
+        <li><a href="{% url 'home' %}">🏠 Home</a></li>
+      <li><a href="{% url 'movies' %}">🎬 Movies</a></li>
+      <li><a href="{% url 'anime' %}">🎞️ Anime</a></li>
+      <li><a href="{% url 'about' %}">ℹ️ About</a></li>
+      <li><a href="{% url 'contact' %}">📩 Contact</a></li>
+      <li><a href="{% url 'login' %}"> 🪪Login</a></li>
+    </ul>
+  </nav>
+
+  <h1>🎞️ Anime Gallery</h1>
+
+  <div id="gallerySection" class="gallery">
+    <div class="photo">
+      <img src="https://i.ibb.co/QFSd8ctR/Your-Name-2016-directed-by-Makoto-Shinkai-is-a.jpg" alt="Your Name">
+      <div class="caption">Your Name</div>
+       <a href="https://drive.google.com/file/d/1yXZi0hpHRqgb3VE9TiVh83HSu5eFne7Q/view?usp=drivesdk" download>⬇️ Download</a>
+    </div>
+    <div class="photo">
+      <img src="https://i.ibb.co/k69vZvy3/18c52712622697f117bac115693d77fe.jpg" alt="A Silent Voice">
+      <div class="caption">A Silent Voice</div>
+      <a href="https://vcloud.cx/1a548b" download>⬇️ Download</a>
+    </div>
+    <div class="photo">
+      <img src="https://i.ibb.co/kVsc2XK2/c4056701ab8477751a82643b4416a933.jpg" alt="Heavenly Delusion">
+      <div class="caption">Heavenly Delusion</div>
+    </div>
+  </div>
+
+  <!-- Optional Photo Viewer -->
+  <div id="photoView">
+    <button class="action back-btn" onclick="document.getElementById('photoView').classList.remove('active'); document.getElementById('gallerySection').style.display='grid';">← Back to Gallery</button>
+    <h2 id="photoTitle"></h2>
+    <img id="photoImg" src="" alt="Selected Photo">
+    <p id="photoDesc"></p>
+    <button class="action download-btn" onclick="downloadPhoto()">⬇️ Download Movie</button>
+  </div>
+
+ <script src="{% static 'auth/js/main.js' %}"></script>
+</body>
+</html>

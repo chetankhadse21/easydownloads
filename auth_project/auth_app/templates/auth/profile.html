@@ -1,0 +1,203 @@
+{% extends 'layout/app.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+.profile-wrapper {
+  max-width: 700px;
+  margin: 70px auto;
+  padding: 20px;
+}
+
+.profile-card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px);
+  border-radius: 26px;
+  padding: 35px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.28);
+  color: var(--text-color,#fff);
+}
+
+.back-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.85;
+}
+
+.back-btn:hover {
+  opacity: 1;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #3aa6f3;
+}
+
+.avatar-upload {
+  display: none;
+}
+
+.avatar-label {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #000;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.section label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input, button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  outline: none;
+}
+
+input {
+  background: rgba(255,255,255,0.85);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg,#3aa6f3,#6dd5fa);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg,#ff4d4d,#ff7373);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+</style>
+
+<div class="profile-wrapper">
+  <div class="profile-card">
+
+    <!-- BACK BUTTON -->
+    <a href="{% url 'dashboard' %}" class="back-btn">← Back to Dashboard</a>
+
+    <!-- HEADER -->
+    <div class="profile-header">
+      <div class="avatar-wrapper">
+        <img
+          src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}{% static 'auth/img/default-avatar.png' %}{% endif %}"
+          class="avatar"
+          id="avatarPreview"
+        >
+
+        <label for="avatarUpload" class="avatar-label">✏️</label>
+        <input
+          type="file"
+          id="avatarUpload"
+          name="avatar"
+          class="avatar-upload"
+          accept="image/*"
+          onchange="previewAvatar(this)"
+          form="avatarForm"
+        >
+      </div>
+
+      <h3 style="margin-top:15px">{{ user.username }}</h3>
+      <p style="opacity:.8">Joined {{ user.date_joined|date:"d M Y" }}</p>
+    </div>
+
+    <!-- AVATAR FORM -->
+    <form id="avatarForm" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="hidden" name="update_avatar">
+    </form>
+
+    <!-- EMAIL UPDATE -->
+    <form method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="update_email">
+
+      <div class="section">
+        <label>Email</label>
+        <input type="email" name="email" value="{{ user.email }}" required>
+      </div>
+
+      <button class="btn-primary">Update Email</button>
+    </form>
+
+    <hr style="margin:30px 0;opacity:.2">
+
+    <!-- PASSWORD CHANGE -->
+    <form method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="change_password">
+
+      <div class="section">
+        {{ password_form.old_password.label_tag }}
+        {{ password_form.old_password }}
+      </div>
+
+      <div class="section">
+        {{ password_form.new_password1.label_tag }}
+        {{ password_form.new_password1 }}
+      </div>
+
+      <div class="section">
+        {{ password_form.new_password2.label_tag }}
+        {{ password_form.new_password2 }}
+      </div>
+
+      {% if password_form.errors %}
+        <p style="color:#ffb3b3">{{ password_form.errors }}</p>
+      {% endif %}
+
+      <button class="btn-danger">Change Password</button>
+    </form>
+
+  </div>
+</div>
+
+<script>
+function previewAvatar(input) {
+  const file = input.files[0]
+  if (!file) return
+
+  const reader = new FileReader()
+  reader.onload = e => {
+    document.getElementById("avatarPreview").src = e.target.result
+  }
+  reader.readAsDataURL(file)
+
+  // auto submit
+  document.getElementById("avatarForm").submit()
+}
+</script>
+
+{% endblock %}

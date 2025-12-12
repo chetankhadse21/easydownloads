@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyDownloadsByk</title>
+  <link rel="icon" type="image/png" href="https://ibb.co/Mk1Nwdtp">
+ <link rel="stylesheet" href="{% static 'auth/css/style.css' %}">
+</head>
+
+<body>
+  <div class="loader" id="loader">Loading...</div>
+
+  <a href="https://ibb.co/Mk1Nwdtp" class="logo-link">
+    <img src="https://i.ibb.co/1GX2ycPK/easydownload-high-resolution-logo-transparent.png" alt="EasyDownloads Logo">
+    <h1></h1>
+  </a>
+
+  <!-- 🌙 Dark/Light Mode Toggle -->
+  <button id="themeToggle" class="theme-toggle">🌙</button>
+
+  <!-- 🍔 Menu Toggle -->
+  <button class="menu-toggle" id="menuToggle">☰</button>
+
+  <!-- 📜 Side Navigation Menu -->
+  <nav id="sideMenu" class="side-menu">
+    <button class="close-btn" id="closeMenu">×</button>
+    <ul>
+      <li><a href="{% url 'home' %}">🏠 Home</a></li>
+      <li><a href="{% url 'movies' %}">🎬 Movies</a></li>
+      <li><a href="{% url 'anime' %}">🎞️ Anime</a></li>
+      <li><a href="{% url 'about' %}">ℹ️ About</a></li>
+      <li><a href="{% url 'contact' %}">📩 Contact</a></li>
+      <li><a href="{% url 'login' %}"> 🪪Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🔍 Search bar -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="🔍 Search downloads or photos...">
+  </div>
+
+  <!-- 📸 Gallery -->
+  <div id="gallerySection" class="gallery"></div>
+
+  <!-- 🖼️ Photo Viewer -->
+  <div id="photoView">
+    <button class="action back-btn" onclick="goBack()">← Back to Gallery</button>
+    <h2 id="photoTitle"></h2>
+    <img id="photoImg" src="" alt="Selected Photo">
+    <p id="photoDesc"></p>
+    <button class="action download-btn" onclick="downloadPhoto()">⬇️ Download Movie</button>
+  </div>
+
+  <footer>© 2025 EasyDownloads — Made for everyone, everywhere.</footer>
+
+  <!-- ✅ Connect external JS -->
+<link rel="stylesheet" href="{% static 'auth/css/style.css' %}">
+<script src="{% static 'auth/js/main.js' %}"></script>
+
+</body>
+</html>

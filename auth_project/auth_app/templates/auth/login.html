@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyDownloadsByk</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" type="image/png" href="https://ibb.co/Mk1Nwdtp">
+ <link rel="stylesheet" href="{% static 'auth/css/style.css' %}">
+</head>
+<style>
+
+    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+    body {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(90deg,#e2e2e2,#c9d6ff);
+}
+
+</style>
+<body>
+  <div class="loader" id="loader">Loading...</div>
+
+  <a href="https://ibb.co/Mk1Nwdtp" class="logo-link">
+    <img src="https://i.ibb.co/1GX2ycPK/easydownload-high-resolution-logo-transparent.png" alt="EasyDownloads Logo">
+    <h1></h1>
+  </a>
+
+  <!-- 🌙 Dark/Light Mode Toggle -->
+  <button id="themeToggle" class="theme-toggle">🌙</button>
+
+  <!-- 🍔 Menu Toggle -->
+  <button class="menu-toggle" id="menuToggle">☰</button>
+
+  <!-- 📜 Side Navigation Menu -->
+  <nav id="sideMenu" class="side-menu">
+    <button class="close-btn" id="closeMenu">×</button>
+    <ul>
+        <li><a href="{% url 'home' %}">🏠 Home</a></li>
+      <li><a href="{% url 'movies' %}">🎬 Movies</a></li>
+      <li><a href="{% url 'anime' %}">🎞️ Anime</a></li>
+      <li><a href="{% url 'about' %}">ℹ️ About</a></li>
+      <li><a href="{% url 'contact' %}">📩 Contact</a></li>
+      <li><a href="{% url 'login' %}"> 🪪Login</a></li>
+    </ul>
+  </nav>
+  <div class="main-content">
+     <div class="container">
+
+  <div class="form-box login">
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+
+      <h1>Login</h1>
+
+      <div class="input-box">
+        <input
+          type="text"
+          name="username"
+          id="{{ form.username.id_for_label }}"
+          placeholder="Username"
+          value="{{ form.username.value|default_if_none:'' }}"
+          required
+        >
+        <i class='bx bxs-user'></i>
+        {{ form.username.errors }}
+      </div>
+
+      <div class="input-box">
+        <input
+          type="password"
+          name="password"
+          id="{{ form.password.id_for_label }}"
+          placeholder="Password"
+          required
+        >
+        <i class='bx bxs-lock-alt'></i>
+        {{ form.password.errors }}
+      </div>
+
+      <div class="forgot-link">
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn">Login</button>
+
+      <p>or login with social platforms</p>
+      <div class="social-icon">
+        <a href="#"><i class='bx bxl-google'></i></a>
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+        <a href="#"><i class='bx bxl-github'></i></a>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="form-box register">
+    <form method="POST" action="{% url 'register' %}">
+      {% csrf_token %}
+
+      <h1>Registration</h1>
+
+      <div class="input-box">
+        <input
+          type="text"
+          name="username"
+          id="{{ reg_form.username.id_for_label }}"
+          placeholder="Username"
+          value="{{ reg_form.username.value|default_if_none:'' }}"
+          required
+        >
+        <i class='bx bxs-user'></i>
+        {{ reg_form.username.errors }}
+      </div>
+    <div class="input-box">
+  <input
+    type="email"
+    name="email"
+    id="{{ reg_form.email.id_for_label }}"
+    placeholder="Email"
+    required
+  >
+  <i class='bx bx-envelope'></i>
+  {{ reg_form.email.errors }}
+</div>
+
+      <div class="input-box">
+        <input
+          type="password"
+          name="password1"
+          id="{{ reg_form.password1.id_for_label }}"
+          placeholder="Password"
+          required
+        >
+        <i class='bx bxs-lock-alt'></i>
+        {{ reg_form.password1.errors }}
+      </div>
+
+      <div class="input-box">
+        <input
+          type="password"
+          name="password2"
+          id="{{ reg_form.password2.id_for_label }}"
+          placeholder="Confirm Password"
+          required
+        >
+        <i class='bx bxs-lock-alt'></i>
+        {{ reg_form.password2.errors }}
+      </div>
+
+      <button type="submit" class="btn">Register</button>
+
+      <p>or register with social platforms</p>
+      <div class="social-icon">
+        <a href="#"><i class='bx bxl-google'></i></a>
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+        <a href="#"><i class='bx bxl-github'></i></a>
+      </div>
+    </form>
+  </div>
+
+
+
+
+            <div class="toggel-box">
+                <div class="toggel-panel toggel-left">
+                    <h1>Hello,welcome</h1>
+                    <p>Don't have account?</p>
+                    <button class="btn register-btn">Register</button>
+                </div>
+                <div class="toggel-panel toggel-right">
+                    <h1>welcome Back!</h1>
+                    <p>Already have an account?</p>
+                    <button class="btn login-btn">Login</button>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+    </div>
+
+        <footer>© 2025 EasyDownloads — Made for everyone, everywhere.</footer>
+    
+  <!-- ✅ Connect external JS -->
+ <script src="{% static 'auth/js/main.js' %}"></script>
+</body>
+</html>

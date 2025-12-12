@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | EasyDownloadsByk</title>
+  <link rel="stylesheet" href="{% static 'auth/css/style.css' %}">
+</head>
+
+<body>
+
+  <!-- Logo -->
+  <a href="index.html" class="logo-link">
+    <img 
+      src="https://i.ibb.co/1GX2ycPK/easydownload-high-resolution-logo-transparent.png" 
+      alt="EasyDownloads Logo"
+    >
+  </a>
+
+  <!-- Theme + Menu Buttons -->
+  <button id="themeToggle" class="theme-toggle">🌙</button>
+  <button id="menuToggle" class="menu-toggle">☰</button>
+
+  <!-- Side Menu -->
+  <nav id="sideMenu" class="side-menu">
+    <button id="closeMenu" class="close-btn">×</button>
+
+    <ul>
+        <li><a href="{% url 'home' %}">🏠 Home</a></li>
+      <li><a href="{% url 'movies' %}">🎬 Movies</a></li>
+      <li><a href="{% url 'anime' %}">🎞️ Anime</a></li>
+      <li><a href="{% url 'about' %}">ℹ️ About</a></li>
+      <li><a href="{% url 'contact' %}">📩 Contact</a></li>
+      <li><a href="{% url 'login' %}"> 🪪Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- About Section -->
+  <section class="about-section">
+
+    <img 
+      class="about-photo" 
+      src="https://i.ibb.co/1GX2ycPK/easydownload-high-resolution-logo-transparent.png" 
+      alt="EasyDownloads Logo"
+    >
+
+    <h1>About EasyDownloads</h1>
+
+    <p>
+      <strong>EasyDownloads</strong> is a lightweight and user-friendly platform created to make 
+      downloading movies, anime, and entertainment content simple and accessible for everyone.
+      The goal is to provide a clean, ad-free experience with dark-mode support and a modern UI.
+      Welcome to EasyDownloads — your streamlined gateway to movies and film content. 
+      Browse curated collections, watch trailers, read reviews, and find convenient links 
+      to stream or download content legally. Our mission is to make discovering movies effortless 
+      with clear options, fast navigation, and reliable recommendations.
+    </p>
+
+    <!-- Creator Card -->
+    <div class="creator-card">
+      <img 
+        src="https://i.ibb.co/wrNQXGgx/download-2.jpg" 
+        alt="Creator"
+      >
+      <div>
+        <h2>Created by: <span>spidy</span></h2>
+        <p>Developer • Designer • Movie Enthusiast 🎬</p>
+      </div>
+    </div>
+
+    <p class="about-quote">
+      "Simplicity meets creativity — download smarter, not harder."
+    </p>
+
+  </section>
+
+  <footer>
+    © 2025 EasyDownloads — About Page.
+  </footer>
+
+  <script src="{% static 'auth/js/main.js' %}"></script>
+
+</body>
+</html>
